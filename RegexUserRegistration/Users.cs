@@ -12,6 +12,7 @@ namespace RegexUserRegistration
         private static bool ValidationCheck;
         private string FirstName;
         private string LastName;
+        private string Email;
 
         public void TakeFirstName()
         {
@@ -31,8 +32,20 @@ namespace RegexUserRegistration
             {
                 Console.Write("Enter Last Name: ");
                 this.LastName = Console.ReadLine();
-                ValidationCheck = RegexPattern.ValidateFirstName(this.LastName);
+                ValidationCheck = RegexPattern.ValidateLastName(this.LastName);
                 DisplayOutput("LastName");
+            }
+            while (!ValidationCheck);
+        }
+
+        public void TakeEmail()
+        {
+            do
+            {
+                Console.Write("Enter Email: ");
+                this.Email = Console.ReadLine();
+                ValidationCheck = RegexPattern.ValidateEmail(this.Email);
+                DisplayOutput("Email");
             }
             while (!ValidationCheck);
         }
@@ -57,6 +70,11 @@ namespace RegexUserRegistration
                     break;
                 case "LastName":
                     Console.WriteLine("Rule: Last Name starts with Capital and has minimum 3 characters.\n");
+                    break;
+                case "Email":
+                    Console.WriteLine("  Rule:");
+                    Console.WriteLine("- E.g.: abc.xyz@bl.co.in");
+                    Console.WriteLine("- Email has 3 mandatory parts (abc, bl & co) and 2 optional(xyz & in) with precise @ and.positions\n");
                     break;
                 default:
                     break;
