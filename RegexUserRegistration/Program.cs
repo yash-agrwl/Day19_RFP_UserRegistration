@@ -10,6 +10,7 @@ namespace RegexUserRegistration
 
             Users user1 = new();
             user1.TakeFirstName();
+            user1.TakeLastName();
         }
     }
 }

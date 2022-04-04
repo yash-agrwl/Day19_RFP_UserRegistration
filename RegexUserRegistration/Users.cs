@@ -11,6 +11,7 @@ namespace RegexUserRegistration
 
         private static bool ValidationCheck;
         private string FirstName;
+        private string LastName;
 
         public void TakeFirstName()
         {
@@ -20,6 +21,18 @@ namespace RegexUserRegistration
                 this.FirstName = Console.ReadLine();
                 ValidationCheck = RegexPattern.ValidateFirstName(this.FirstName);
                 DisplayOutput("FirstName");
+            }
+            while (!ValidationCheck);
+        }
+
+        public void TakeLastName()
+        {
+            do
+            {
+                Console.Write("Enter Last Name: ");
+                this.LastName = Console.ReadLine();
+                ValidationCheck = RegexPattern.ValidateFirstName(this.LastName);
+                DisplayOutput("LastName");
             }
             while (!ValidationCheck);
         }
@@ -41,6 +54,9 @@ namespace RegexUserRegistration
             {
                 case "FirstName":
                     Console.WriteLine("Rule: First Name starts with Capital and has minimum 3 characters.\n");
+                    break;
+                case "LastName":
+                    Console.WriteLine("Rule: Last Name starts with Capital and has minimum 3 characters.\n");
                     break;
                 default:
                     break;

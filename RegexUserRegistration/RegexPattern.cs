@@ -10,11 +10,17 @@ namespace RegexUserRegistration
     internal class RegexPattern
     {
 
-        public static string FirstNamePattern = "^[A-Z][a-z]{2,}$";
+        static string FirstNamePattern = "^[A-Z][a-z]{2,}$";
+        static string LastNamePattern = "^[A-Z][a-z]{2,}$";
 
         public static bool ValidateFirstName(string firstName)
         {
             return Regex.IsMatch(firstName, FirstNamePattern);
+        }
+
+        public static bool ValidateLastName(string lastName)
+        {
+            return Regex.IsMatch(lastName, LastNamePattern);
         }
     }
 }
