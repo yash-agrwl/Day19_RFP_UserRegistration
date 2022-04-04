@@ -14,6 +14,7 @@ namespace RegexUserRegistration
         private string LastName;
         private string Email;
         private string MobileNo;
+        private string Password;
 
         public void TakeFirstName()
         {
@@ -63,6 +64,18 @@ namespace RegexUserRegistration
             while (!ValidationCheck);
         }
 
+        public void TakePassword()
+        {
+            do
+            {
+                Console.Write("Enter Password: ");
+                this.Password = Console.ReadLine();
+                ValidationCheck = RegexPattern.ValidatePassword(this.Password);
+                DisplayOutput("Password");
+            }
+            while (!ValidationCheck);
+        }
+
         public static void DisplayOutput(string option)
         {
             if (ValidationCheck)
@@ -92,7 +105,10 @@ namespace RegexUserRegistration
                 case "MobileNo":
                     Console.WriteLine("  Rule:");
                     Console.WriteLine("- E.g.: 91 9919819801");
-                    Console.WriteLine("- Country code follow by space and 10 digit number");
+                    Console.WriteLine("- Country code follow by space and 10 digit number.\n");
+                    break;
+                case "Password":
+                    Console.WriteLine("Rule1: minimum 8 characters.\n");
                     break;
                 default:
                     break;
