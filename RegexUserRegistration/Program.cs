@@ -12,6 +12,7 @@ namespace RegexUserRegistration
             user1.TakeFirstName();
             user1.TakeLastName();
             user1.TakeEmail();
+            user1.TakeMobileNo();
         }
     }
 }
