@@ -14,7 +14,7 @@ namespace RegexUserRegistration
         static string LastNamePattern = "^[A-Z][a-z]{2,}$";
         static string EmailPattern = @"^[a-z0-9]+([-+_.][a-z]+)?[@][a-z]+[.][a-z]{2,3}([.][a-z]{2})?$";
         static string MobilePattern = @"^[0-9]{2}\s[0-9]{10}";
-        static string PasswordPattern = "^(?=.{8,}$).*$";
+        static string PasswordPattern = "^(?=.{8,}$)(?=.*[A-Z]).*$";
 
         public static bool ValidateFirstName(string firstName)
         {

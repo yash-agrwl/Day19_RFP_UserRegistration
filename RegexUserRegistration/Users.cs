@@ -108,7 +108,8 @@ namespace RegexUserRegistration
                     Console.WriteLine("- Country code follow by space and 10 digit number.\n");
                     break;
                 case "Password":
-                    Console.WriteLine("Rule1: minimum 8 characters.\n");
+                    Console.WriteLine("Rule1: minimum 8 characters.");
+                    Console.WriteLine("Rule2: Should have atleast 1 Upper Case.\n");
                     break;
                 default:
                     break;
