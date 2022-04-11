@@ -110,7 +110,8 @@ namespace RegexUserRegistration
                 case "Password":
                     Console.WriteLine("Rule1: minimum 8 characters.");
                     Console.WriteLine("Rule2: Should have atleast 1 Upper Case.");
-                    Console.WriteLine("Rule3: Should have atleast 1 Numeric number.\n");
+                    Console.WriteLine("Rule3: Should have atleast 1 Numeric number.");
+                    Console.WriteLine("Rule4: Has exactly 1 special Characters.\n");
                     break;
                 default:
                     break;
