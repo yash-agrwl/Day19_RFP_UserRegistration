@@ -47,5 +47,18 @@ namespace RegexUserRegistrationMSTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        [DataRow("91 9345345790", true)]
+        [DataRow("94358888", false)]
+        public void GivenMobileNumShouldReturnTrueOrFalse(string mobile, bool expected)
+        {
+
+            //Act
+            bool actual = RegexPattern.ValidateMobile(mobile);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
