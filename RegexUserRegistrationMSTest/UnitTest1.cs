@@ -60,5 +60,19 @@ namespace RegexUserRegistrationMSTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        //Arrange
+        [DataRow("sabdP0+s", true)]
+        [DataRow("sabd", false)]
+        public void GivenPasswordShouldReturnTrueOrFalse(string password, bool expected)
+        {
+
+            //Act
+            bool actual = RegexPattern.ValidatePassword(password);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
