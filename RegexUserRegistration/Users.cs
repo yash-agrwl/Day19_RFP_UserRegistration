@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RegexUserRegistration
 {
-    internal class Users
+    public class Users
     {
 
         private static bool ValidationCheck;

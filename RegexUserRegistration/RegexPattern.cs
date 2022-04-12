@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RegexUserRegistration
 {
-    internal class RegexPattern
+    public class RegexPattern
     {
 
         static string FirstNamePattern = "^[A-Z][a-z]{2,}$";
