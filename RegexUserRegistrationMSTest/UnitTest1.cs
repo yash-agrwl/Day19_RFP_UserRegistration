@@ -34,5 +34,18 @@ namespace RegexUserRegistrationMSTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        [DataRow("agarwal@gmail.com", true)]
+        [DataRow("a.com", false)]
+        public void GivenEmailShouldReturnTrueOrFalse(string email, bool expected)
+        {
+
+            //Act
+            bool actual = RegexPattern.ValidateEmail(email);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
