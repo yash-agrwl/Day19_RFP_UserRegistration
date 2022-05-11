@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RegexUserRegistration\RegexUserRegistration.csproj" />
+    <ProjectReference Include="..\RegexUserRegistration\UserRegistration.csproj" />
   </ItemGroup>
 
 </Project>

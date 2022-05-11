@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RegexUserRegistration;
+using UserRegistration;
 
-namespace RegexUserRegistrationMSTest
+namespace UserRegistrationMSTest
 {
     [TestClass]
     public class TestRegexPattern
