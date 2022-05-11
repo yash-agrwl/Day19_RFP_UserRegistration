@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration", "RegexUserRegistration\UserRegistration.csproj", "{2DB8BB43-4516-4FC5-834C-6A114A65BBBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegexUserRegistration", "RegexUserRegistration\RegexUserRegistration.csproj", "{2DB8BB43-4516-4FC5-834C-6A114A65BBBF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistrationMSTest", "RegexUserRegistrationMSTest\UserRegistrationMSTest.csproj", "{3A28FB52-15C5-432D-A5CD-DEC6BBD008F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexUserRegistrationMSTest", "RegexUserRegistrationMSTest\RegexUserRegistrationMSTest.csproj", "{3A28FB52-15C5-432D-A5CD-DEC6BBD008F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

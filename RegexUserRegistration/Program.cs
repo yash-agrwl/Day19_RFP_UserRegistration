@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UserRegistration
+namespace RegexUserRegistration
 {
     public class Program
     {
