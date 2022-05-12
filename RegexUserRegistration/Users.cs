@@ -18,73 +18,113 @@ namespace RegexUserRegistration
 
         public void TakeFirstName()
         {
+            ValidationCheck = false;
             do
             {
                 Console.Write("Enter First Name: ");
                 this.FirstName = Console.ReadLine();
-                ValidationCheck = RegexPattern.ValidateFirstName(this.FirstName);
-                DisplayOutput("FirstName");
+                try
+                {
+                    ValidationCheck = RegexPattern.ValidateFirstName(this.FirstName);
+                    DisplayOutput();
+                }
+                catch (UserRegistrationCustomException ex)
+                {
+                    Console.WriteLine($"\nError: {ex.Message}.\nPlease Try Again.");
+                    DisplayRules("FirstName");
+                }
             }
             while (!ValidationCheck);
         }
 
         public void TakeLastName()
         {
+            ValidationCheck = false;
             do
             {
                 Console.Write("Enter Last Name: ");
                 this.LastName = Console.ReadLine();
-                ValidationCheck = RegexPattern.ValidateLastName(this.LastName);
-                DisplayOutput("LastName");
+                try
+                {
+                    ValidationCheck = RegexPattern.ValidateLastName(this.LastName);
+                    DisplayOutput();
+                }
+                catch(UserRegistrationCustomException ex)
+                {
+                    Console.WriteLine($"\nError: {ex.Message}.\nPlease Try Again.");
+                    DisplayRules("LastName");
+                }
             }
             while (!ValidationCheck);
         }
 
         public void TakeEmail()
         {
+            ValidationCheck = false;
             do
             {
                 Console.Write("Enter Email: ");
                 this.Email = Console.ReadLine();
-                ValidationCheck = RegexPattern.ValidateEmail(this.Email);
-                DisplayOutput("Email");
+                try
+                {
+                    ValidationCheck = RegexPattern.ValidateEmail(this.Email);
+                    DisplayOutput();
+                }
+                catch (UserRegistrationCustomException ex)
+                {
+                    Console.WriteLine($"\nError: {ex.Message}.\nPlease Try Again.");
+                    DisplayRules("Email");
+                }
             }
             while (!ValidationCheck);
         }
 
         public void TakeMobileNo()
         {
+            ValidationCheck = false;
             do
             {
                 Console.Write("Enter Mobile.No: ");
                 this.MobileNo = Console.ReadLine();
-                ValidationCheck = RegexPattern.ValidateMobile(this.MobileNo);
-                DisplayOutput("MobileNo");
+                try
+                {
+                    ValidationCheck = RegexPattern.ValidateMobile(this.MobileNo);
+                    DisplayOutput();
+                }
+                catch (UserRegistrationCustomException ex)
+                {
+                    Console.WriteLine($"\nError: {ex.Message}.\nPlease Try Again.");
+                    DisplayRules("MobileNo");
+                }
             }
             while (!ValidationCheck);
         }
 
         public void TakePassword()
         {
+            ValidationCheck = false;
             do
             {
                 Console.Write("Enter Password: ");
                 this.Password = Console.ReadLine();
-                ValidationCheck = RegexPattern.ValidatePassword(this.Password);
-                DisplayOutput("Password");
+                try
+                {
+                    ValidationCheck = RegexPattern.ValidatePassword(this.Password);
+                    DisplayOutput();
+                }
+                catch (UserRegistrationCustomException ex)
+                {
+                    Console.WriteLine($"\nError: {ex.Message}.\nPlease Try Again.");
+                    DisplayRules("Password");
+                }
             }
             while (!ValidationCheck);
         }
 
-        public static void DisplayOutput(string option)
+        public static void DisplayOutput()
         {
             if (ValidationCheck)
                 Console.WriteLine("\nThe Entered Input is Valid.\n");
-            else
-            {
-                Console.WriteLine("\nThe Entered Input is Invalid.\nPlease Try Again.");
-                DisplayRules(option);
-            }
         }
 
         public static void DisplayRules(string option)

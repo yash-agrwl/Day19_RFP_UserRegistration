@@ -17,11 +17,20 @@ namespace RegexUserRegistrationMSTest
         [DataRow("yash",false)]
         public void GivenFirstNameShouldReturnTrueOrFalse(string firstName, bool expected)
         {
+            bool actual;
 
-            //Act
-            bool actual = RegexPattern.ValidateFirstName(firstName);
+            try
+            {
+                // Act
+                actual = RegexPattern.ValidateFirstName(firstName);
+            }
+            catch(UserRegistrationCustomException)
+            {
+                // Act
+                actual = false;
+            }
 
-            //Assert
+            // Assert
             Assert.AreEqual(expected, actual);
         }
 
@@ -36,11 +45,20 @@ namespace RegexUserRegistrationMSTest
         [DataRow("agarwal", false)]
         public void GivenLastNameShouldReturnTrueOrFalse(string lastName, bool expected)
         {
+            bool actual;
 
-            //Act
-            bool actual = RegexPattern.ValidateLastName(lastName);
+            try
+            {
+                // Act
+                actual = RegexPattern.ValidateLastName(lastName);
+            }
+            catch (UserRegistrationCustomException)
+            {
+                // Act
+                actual = false;
+            }
 
-            //Assert
+            // Assert
             Assert.AreEqual(expected, actual);
         }
 
@@ -54,11 +72,20 @@ namespace RegexUserRegistrationMSTest
         [DataRow("a.com", false)]
         public void GivenEmailShouldReturnTrueOrFalse(string email, bool expected)
         {
+            bool actual;
 
-            //Act
-            bool actual = RegexPattern.ValidateEmail(email);
+            try
+            {
+                // Act
+                actual = RegexPattern.ValidateEmail(email);
+            }
+            catch (UserRegistrationCustomException)
+            {
+                // Act
+                actual = false;
+            }
 
-            //Assert
+            // Assert
             Assert.AreEqual(expected, actual);
         }
 
@@ -72,11 +99,20 @@ namespace RegexUserRegistrationMSTest
         [DataRow("94358888", false)]
         public void GivenMobileNumShouldReturnTrueOrFalse(string mobile, bool expected)
         {
+            bool actual;
 
-            //Act
-            bool actual = RegexPattern.ValidateMobile(mobile);
+            try
+            {
+                // Act
+                actual = RegexPattern.ValidateMobile(mobile);
+            }
+            catch (UserRegistrationCustomException)
+            {
+                // Act
+                actual = false;
+            }
 
-            //Assert
+            // Assert
             Assert.AreEqual(expected, actual);
         }
 
@@ -91,11 +127,20 @@ namespace RegexUserRegistrationMSTest
         [DataRow("sabd", false)]
         public void GivenPasswordShouldReturnTrueOrFalse(string password, bool expected)
         {
+            bool actual;
 
-            //Act
-            bool actual = RegexPattern.ValidatePassword(password);
+            try
+            {
+                // Act
+                actual = RegexPattern.ValidatePassword(password);
+            }
+            catch (UserRegistrationCustomException)
+            {
+                // Act
+                actual = false;
+            }
 
-            //Assert
+            // Assert
             Assert.AreEqual(expected, actual);
         }
     }

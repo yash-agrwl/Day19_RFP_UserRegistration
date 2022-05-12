@@ -18,38 +18,73 @@ namespace RegexUserRegistration
 
         public static bool ValidateFirstName(string firstName)
         {
-            return Regex.IsMatch(firstName, FirstNamePattern);
+            CheckEmpty(firstName);
+            bool match = Regex.IsMatch(firstName, FirstNamePattern);
+            if (match)
+                return true;
+            else
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.INVALID_INPUT, "The Entered Input is Invalid");
         }
 
         public static bool ValidateLastName(string lastName)
         {
-            return Regex.IsMatch(lastName, LastNamePattern);
+            CheckEmpty(lastName);
+            bool match = Regex.IsMatch(lastName, LastNamePattern);
+            if (match)
+                return true;
+            else
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.INVALID_INPUT, "The Entered Input is Invalid");
         }
 
         public static bool ValidateEmail(string email)
         {
-            return Regex.IsMatch(email, EmailPattern);
+            CheckEmpty(email);
+            bool match = Regex.IsMatch(email, EmailPattern);
+            if (match)
+                return true;
+            else
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.INVALID_INPUT, "The Entered Input is Invalid");
         }
 
         public static bool ValidateMobile(string mobileNo)
         {
-            return Regex.IsMatch(mobileNo, MobilePattern);
+            CheckEmpty(mobileNo);
+            bool match = Regex.IsMatch(mobileNo, MobilePattern);
+            if (match)
+                return true;
+            else
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.INVALID_INPUT, "The Entered Input is Invalid");
         }
 
         public static bool ValidatePassword(string password)
         {
-            return Regex.IsMatch(password, PasswordPattern);
+            CheckEmpty(password);
+            bool match = Regex.IsMatch(password, PasswordPattern);
+            if (match)
+                return true;
+            else
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.INVALID_INPUT, "The Entered Input is Invalid");
+        }
+
+        public static void CheckEmpty(string input)
+        {
+            if (input == "")
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_INPUT, "Input cannot be empty");
         }
 
         public static void ValidateEmailSamples(string[] emailSamples)
         {
             foreach (string email in emailSamples)
             {
-                bool result = ValidateEmail(email);
-                if (result)
+                try
+                {
+                    bool result = ValidateEmail(email);
                     Console.WriteLine(" " + email + " ------> is Valid\n");
-                else
+                }
+                catch (UserRegistrationCustomException)
+                {
                     Console.WriteLine(" " + email + " ------> is Invalid\n");
+                }     
             }
         }
     }
