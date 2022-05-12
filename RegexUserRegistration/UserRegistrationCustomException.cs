@@ -14,7 +14,9 @@ namespace RegexUserRegistration
         public enum ExceptionType
         {
             EMPTY_INPUT,
-            INVALID_INPUT
+            INVALID_INPUT,
+            NO_SUCH_CLASS,
+            NO_SUCH_METHOD
         }
 
         /// <summary>
