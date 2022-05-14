@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,19 +11,63 @@ namespace RegexUserRegistration
     {
 
         private static bool ValidationCheck;
-        private string FirstName;
-        private string LastName;
-        private string Email;
-        private string MobileNo;
-        private string Password;
+
+        [Required(ErrorMessage = "{0} cannot be empty.")]
+        [RegularExpression(RegexPattern.FirstNamePattern, ErrorMessage = "{0} doesn't match the required constraints.")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "{0} cannot be empty.")]
+        [RegularExpression(RegexPattern.LastNamePattern, ErrorMessage = "{0} doesn't match the required constraints.")]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage = "{0} cannot be empty.")]
+        [RegularExpression(RegexPattern.EmailPattern, ErrorMessage = "{0} doesn't match the required constraints.")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "{0} cannot be empty.")]
+        [RegularExpression(RegexPattern.MobilePattern, ErrorMessage = "{0} doesn't match the required constraints.")]
+        public string MobileNo { get; set; }
+
+        [Required(ErrorMessage = "{0} cannot be empty.")]
+        [RegularExpression(RegexPattern.PasswordPattern, ErrorMessage = "{0} doesn't match the required constraints.")]
+        public string Password { get; set; }
 
         public void TakeFirstName()
+        {
+            Console.Write("Enter First Name: ");
+            this.FirstName = Console.ReadLine();
+        }
+
+        public void TakeLastName()
+        {
+            Console.Write("Enter Last Name: ");
+            this.LastName = Console.ReadLine();
+        }
+
+        public void TakeEmail()
+        {
+            Console.Write("Enter Email: ");
+            this.Email = Console.ReadLine();
+        }
+
+        public void TakeMobileNo()
+        {
+            Console.Write("Enter Mobile.No: ");
+            this.MobileNo = Console.ReadLine();
+        }
+
+        public void TakePassword()
+        {
+            Console.Write("Enter Password: ");
+            this.Password = Console.ReadLine();
+        }
+
+        public void ValidateFirstNameUsingRegex()
         {
             ValidationCheck = false;
             do
             {
-                Console.Write("Enter First Name: ");
-                this.FirstName = Console.ReadLine();
+                this.TakeFirstName();
                 try
                 {
                     ValidationCheck = RegexPattern.ValidateFirstName(this.FirstName);
@@ -37,13 +82,12 @@ namespace RegexUserRegistration
             while (!ValidationCheck);
         }
 
-        public void TakeLastName()
+        public void ValidateLastNameusingRegex()
         {
             ValidationCheck = false;
             do
             {
-                Console.Write("Enter Last Name: ");
-                this.LastName = Console.ReadLine();
+                this.TakeLastName();
                 try
                 {
                     ValidationCheck = RegexPattern.ValidateLastName(this.LastName);
@@ -58,13 +102,12 @@ namespace RegexUserRegistration
             while (!ValidationCheck);
         }
 
-        public void TakeEmail()
+        public void ValidateEmailUsingRegex()
         {
             ValidationCheck = false;
             do
             {
-                Console.Write("Enter Email: ");
-                this.Email = Console.ReadLine();
+                this.TakeEmail();
                 try
                 {
                     ValidationCheck = RegexPattern.ValidateEmail(this.Email);
@@ -79,13 +122,12 @@ namespace RegexUserRegistration
             while (!ValidationCheck);
         }
 
-        public void TakeMobileNo()
+        public void ValidateMobileNoUsingRegex()
         {
             ValidationCheck = false;
             do
             {
-                Console.Write("Enter Mobile.No: ");
-                this.MobileNo = Console.ReadLine();
+                this.TakeMobileNo();
                 try
                 {
                     ValidationCheck = RegexPattern.ValidateMobile(this.MobileNo);
@@ -100,13 +142,12 @@ namespace RegexUserRegistration
             while (!ValidationCheck);
         }
 
-        public void TakePassword()
+        public void ValidatePasswordUsingRegex()
         {
             ValidationCheck = false;
             do
             {
-                Console.Write("Enter Password: ");
-                this.Password = Console.ReadLine();
+                this.TakePassword();
                 try
                 {
                     ValidationCheck = RegexPattern.ValidatePassword(this.Password);
@@ -119,6 +160,40 @@ namespace RegexUserRegistration
                 }
             }
             while (!ValidationCheck);
+        }
+
+        public static void ValidateUserUsingAnnotation(Users user)
+        {
+            loop:
+            Console.WriteLine("-----------Enter User Details-----------\n");
+            user.TakeFirstName();
+            user.TakeLastName();
+            user.TakeEmail();
+            user.TakeMobileNo();
+            user.TakePassword();
+            Console.WriteLine();
+
+            // Inbuilt class for validation to pass object, service and dictionary
+            // if services and dictionaries are not used we can make it as null.
+            ValidationContext context = new(user, null, null);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(user, context, results, true);
+
+            // Condition if the fields are not valid.
+            if (!valid)
+            {
+                // Foreach loop is used to transverse the data if error occurs prints the error messages in different colours.
+                foreach (ValidationResult Totalresult in results)
+                {
+                    Console.WriteLine("Error :: {0}", Totalresult.ErrorMessage);
+                }
+                Console.WriteLine();
+                goto loop;
+            }
+            else
+            {
+                Console.WriteLine("All the user details has been validated successfully.");
+            }
         }
 
         public static void DisplayOutput()

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace RegexUserRegistration
 {
@@ -29,12 +32,36 @@ namespace RegexUserRegistration
             Console.WriteLine("==========================================\n");
 
             Users user1 = new();
-            user1.TakeFirstName();
-            user1.TakeLastName();
-            user1.TakeEmail();
-            user1.TakeMobileNo();
-            user1.TakePassword();
-            Console.WriteLine("All the user details has been validated successfully.");
+
+            loop:
+            Console.WriteLine("Press '1' to validate using Regex Pattern.");
+            Console.WriteLine("Press '2' to validate using Annotations.");
+            Console.WriteLine("Press '3' to exit.");
+            Console.Write("Enter Choice: ");
+            string choice = Console.ReadLine();
+            Console.WriteLine();
+
+            switch (choice)
+            {
+                case "1":
+                    Console.WriteLine("-----------Enter User Details-----------\n");
+                    user1.ValidateFirstNameUsingRegex();
+                    user1.ValidateLastNameusingRegex();
+                    user1.ValidateEmailUsingRegex();
+                    user1.ValidateMobileNoUsingRegex();
+                    user1.ValidatePasswordUsingRegex();
+                    Console.WriteLine("All the user details has been validated successfully.");
+                    break;
+                case "2":
+                    Users.ValidateUserUsingAnnotation(user1);
+                    break;
+                case "3":
+                    Console.WriteLine("Program exited successfully.");
+                    break;
+                default:
+                    Console.WriteLine("Invalid Option\n");
+                    goto loop;
+            }
         }
     }
 }

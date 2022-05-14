@@ -10,11 +10,11 @@ namespace RegexUserRegistration
     public class RegexPattern
     {
 
-        private static readonly string FirstNamePattern = "^[A-Z][a-z]{2,}$";
-        private static readonly string LastNamePattern = "^[A-Z][a-z]{2,}$";
-        private static readonly string EmailPattern = @"^[a-z0-9]+([-+_.][a-z0-9]+)?[@][a-z0-9]+[.][a-z0-9]{2,3}([.][a-z]{2})?$";
-        private static readonly string MobilePattern = @"^[0-9]{2}\s[0-9]{10}";
-        private static readonly string PasswordPattern = @"^(?=.{8,}$)(?=.*[A-Z])(?=.*[0-9])[\w\d]{0,}[\W]{1}[\w\d]{0,}$";
+        public const string FirstNamePattern = "^[A-Z][a-z]{2,}$";
+        public const string LastNamePattern = "^[A-Z][a-z]{2,}$";
+        public const string EmailPattern = @"^[a-z0-9]+([-+_.][a-z0-9]+)?[@][a-z0-9]+[.][a-z0-9]{2,3}([.][a-z]{2})?$";
+        public const string MobilePattern = @"^[0-9]{2}\s[0-9]{10}";
+        public const string PasswordPattern = @"^(?=.{8,}$)(?=.*[A-Z])(?=.*[0-9])[\w\d]{0,}[\W]{1}[\w\d]{0,}$";
 
         /// <summary>
         /// A Delegate taking two input parameters and referring to the Regex.IsMatch method.
